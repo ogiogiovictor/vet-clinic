@@ -26,3 +26,13 @@ INSERT INTO animals (name, date_of_birth, weight_kg, neutered, escape_attempts)
 VALUES ('Ditto', '2022-05-14', '22', true, 4);
 
 
+-- Modify the animals table to include the owners id
+BEGIN;
+UPDATE animals SET owner_id = (SELECT id FROM owners WHERE owners.full_name = 'Sam Smith' LIMIT 1) WHERE name = 'Agumon';
+UPDATE animals SET owner_id = (SELECT id FROM owners WHERE owners.full_name = 'Jennifer Orwell' LIMIT 1) WHERE name = 'Gabumon' OR name = 'Pikachu';
+UPDATE animals SET owner_id = (SELECT id FROM owners WHERE owners.full_name = 'Bob' LIMIT 1) WHERE name = 'Devimon' OR name = 'Plantmon';
+UPDATE animals SET owner_id = (SELECT id FROM owners WHERE owners.full_name = 'Melody Pond' LIMIT 1) WHERE name = 'Charmander' OR name = 'Squirtle' OR name = 'Angemon';
+UPDATE animals SET owner_id = (SELECT id FROM owners WHERE owners.full_name = 'Dean Winchester' LIMIT 1) WHERE name = 'Boarmon' OR name = 'Blossom';
+COMMIT
+
+
