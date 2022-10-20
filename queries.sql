@@ -80,18 +80,6 @@ SELECT species, MIN(weight_kg) AS minimun, MAX(weight_kg) as maximum FROM animal
 SELECT species, COUNT(escape_attempts) FROM animals WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31' GROUP BY species;
 
 
-INSERT INTO owners (full_name, age) VALUES ('Sam Smith', '34'),
-('Jennifer Orwell', 19),
-('Bob', 15),
-('Melody Pond', 77),
-('Dean Winchester ', 14),
-('Jodie Whittake', 38);
-
-INSERT INTO species (name) VALUES 
-('Pokemon'),
-('Digimon');
-
-
 -- Modify the animals table to include the respective species id
 BEGIN;
 UPDATE animals SET species_id = (SELECT id FROM species WHERE species.name LIKE '%mon' LIMIT 1) WHERE name LIKE '%mon';
