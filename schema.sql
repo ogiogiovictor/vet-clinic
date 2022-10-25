@@ -21,7 +21,7 @@ CREATE TABLE species (
     name VARCHAR(100) NOT NULL
 );
 
--- Commands to add the foreign key 
+-- Commands to add the foreign key
 --ALTER TABLE animals ADD CONSTRAINT fk_species FOREIGN KEY (species_id) REFERENCES species(id);
 ALTER TABLE animals DROP COLUMN species;
 ALTER TABLE animals ADD COLUMN species_id INT;
@@ -41,7 +41,7 @@ CREATE TABLE vets (
 
 -- Table Creation Specialization
 CREATE TABLE specializations (
-    vet_id INT, 
+    vet_id INT,
     species_id INT
 );
 
@@ -54,3 +54,7 @@ CREATE TABLE visits (
 
 -- CREATE INDEX friends_name_asc ON friends(name ASC);
 --// create index employee_name on employees (name);
+
+-- CREATE A INDEX ON THE NAME COLUMN OF THE VISTS TABLE
+CREATE INDEX animal_id_asc ON visits(animal_id asc);
+CREATE INDEX animal_id_asc ON visits(vet_id asc);
