@@ -57,4 +57,6 @@ CREATE TABLE visits (
 
 -- CREATE A INDEX ON THE NAME COLUMN OF THE VISTS TABLE
 CREATE INDEX animal_id_asc ON visits(animal_id asc);
-CREATE INDEX animal_id_asc ON visits(vet_id asc);
+CREATE INDEX vet_id_asc ON visits(vet_id asc);
+CREATE INDEX email_asc ON owners(email asc);
+
