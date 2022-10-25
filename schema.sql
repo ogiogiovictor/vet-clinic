@@ -51,3 +51,6 @@ CREATE TABLE visits (
     animal_id INT,
     date_of_visit DATE
 );
+
+-- CREATE INDEX friends_name_asc ON friends(name ASC);
+--// create index employee_name on employees (name);
