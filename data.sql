@@ -5,7 +5,7 @@ INSERT INTO animals (name, date_of_birth, weight_kg, neutered, escape_attempts) 
 INSERT INTO animals (name, date_of_birth, weight_kg, neutered, escape_attempts) VALUES ('Pikachu', '2021-01-07', '15.04', true, 1);
 INSERT INTO animals (name, date_of_birth, weight_kg, neutered, escape_attempts) VALUES ('Devimon', '2017-05-12', '11', true, 5);
 
-INSERT INTO animals (name, date_of_birth, weight_kg, neutered, escape_attempts) 
+INSERT INTO animals (name, date_of_birth, weight_kg, neutered, escape_attempts)
 VALUES ('Charmander', '2020-02-8', '11', false, 0);
 INSERT INTO animals (name, date_of_birth, weight_kg, neutered, escape_attempts)
 VALUES ('Plantmon', '2021-10-15', '-5.7', true, 2);
@@ -33,7 +33,7 @@ INSERT INTO owners (full_name, age) VALUES ('Sam Smith', '34'),
 ('Dean Winchester ', 14),
 ('Jodie Whittake', 38);
 
-INSERT INTO species (name) VALUES 
+INSERT INTO species (name) VALUES
 ('Pokemon'),
 ('Digimon');
 
@@ -81,4 +81,9 @@ INSERT INTO visits SELECT vets.id, animals.id, 'Feb 27, 2020' FROM animals JOIN 
 INSERT INTO visits SELECT vets.id, animals.id, 'Aug 3, 2020' FROM animals JOIN vets ON vets.name='Maisy Smith' and animals.name='Boarmon';
 INSERT INTO visits SELECT vets.id, animals.id, 'May 24, 2020' FROM animals JOIN vets ON vets.name='Stephanie Mendez' and animals.name='Blossom';
 INSERT INTO visits SELECT vets.id, animals.id, 'Jan 11, 2021' FROM animals JOIN vets ON vets.name='William Tatcher' and animals.name='Blossom';
+
+INSERT INTO visits (animal_id, vet_id, date_of_visit) SELECT * FROM (SELECT id FROM animals) animal_ids, (SELECT id FROM vets) vets_ids, generate_series('1980-01-01'::timestamp, '2021-01-01', '4 hours') visit_timestamp;
+
+insert into owners (full_name, email) select 'Owner ' || generate_series(1,2500000), 'owner_' || generate_series(1,2500000) || '@mail.com';
+
 
