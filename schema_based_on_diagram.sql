@@ -53,3 +53,22 @@ ALTER TABLE IF EXISTS invoice_items
 );
 
 ALTER TABLE IF EXISTS treatments
+
+-- Create Foreign keys connection
+ALTER TABLE medical_histories ADD CONSTRAINT fk_patients FOREIGN KEY (patient_id) REFERENCES patients(id);
+
+-- Creat Foregn keys for invoice and medical history
+ALTER TABLE invoices ADD CONSTRAINT fk_medical_histories FOREIGN KEY (medical_history_id) REFERENCES medical_histories(id);
+
+-- Create Foreign keys for invoice items and invoice
+ALTER TABLE invoice_items ADD CONSTRAINT fk_invoices FOREIGN KEY (invoice_id) REFERENCES invoices(id);
+
+--Create Foreign keys for invoice and treatments
+ALTER TABLE invoice_items ADD CONSTRAINT fk_treatments FOREIGN KEY (treatment_id) REFERENCES treatments(id);
+
+--Create Foreign keys for treatments and medical history
+ALTER TABLE treatments ADD CONSTRAINT fk_medical_histories FOREIGN KEY (medical_history_id) REFERENCES medical_histories(id);
+
+-- Create Indexes
+CREATE INDEX medical_id_asc ON medical_histories(admitted_at asc);
+CREATE INDEX invoiceitem_id_asc ON invoice_items(total_price asc);
