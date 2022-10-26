@@ -59,4 +59,5 @@ CREATE TABLE visits (
 CREATE INDEX animal_id_asc ON visits(animal_id asc);
 CREATE INDEX vet_id_asc ON visits(vet_id asc);
 CREATE INDEX email_asc ON owners(email asc);
+-- CREATE SCHEMA  schema_name_clause
 
