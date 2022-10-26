@@ -72,3 +72,17 @@ ALTER TABLE treatments ADD CONSTRAINT fk_medical_histories FOREIGN KEY (medical_
 -- Create Indexes
 CREATE INDEX medical_id_asc ON medical_histories(admitted_at asc);
 CREATE INDEX invoiceitem_id_asc ON invoice_items(total_price asc);
+
+
+-- Create Many to Many Relationship
+CREATE TABLE history_treatments (
+  id INT GENERATED ALWAYS AS IDENTITY NOT NULL,
+  treatment_id INT,
+  medical_history_id INT,
+  PRIMARY KEY (treatment_id, medical_history_id)
+);
+
+-- Add many to many keys
+ALTER TABLE history_treatments ADD CONSTRAINT fk_history FOREIGN KEY (treatment_id) REFERENCES treatments(id);
+
+ALTER TABLE history_treatments ADD CONSTRAINT fk_medical_history FOREIGN KEY (medical_history_id) REFERENCES medical_histories(id);
