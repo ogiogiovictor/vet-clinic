@@ -56,7 +56,7 @@ DELETE FROM animals WHERE date_of_birth > '2022-01-01';
 SAVEPOINT animalDeleteSavePoint;
 UPDATE animals SET weight_kg = weight_kg * -1;
 ROLLBACK TO animalDeleteSavePoint;
-UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0; 
+UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
 COMMIT;
 
 
@@ -95,7 +95,7 @@ WHERE o.full_name = 'Melody Pond';
 --List of all animals that are pokemon (their type is Pokemon).
 SELECT a.name, escape_attempts FROM animals AS a
 JOIN species AS s ON s.id = a.owner_id
-WHERE s.name LIKE 'Pokemon' 
+WHERE s.name LIKE 'Pokemon'
 
 --List all owners and their animals, remember to include those that don't own any animal.
 SELECT o.full_name as owner, a.name as animal_name FROM owners AS o
@@ -116,7 +116,7 @@ WHERE o.full_name = 'Jennifer Orwell' AND s.name LIKE 'Digimon';
 SELECT a.name FROM animals AS a
 JOIN owners AS o ON o.id = a.owner_id
 WHERE o.full_name = 'Dean Winchester' AND a.escape_attempts <= 0;
-    
+
 
 --Who owns the most animals?
 SELECT full_name as animal_owner, COUNT(a.name) FROM owners AS o
@@ -183,3 +183,6 @@ JOIN vets ON visits.vet_id = vets.id
 JOIN species ON animals.species_id = species.id
 WHERE vets.name = 'Maisy Smith'
 GROUP BY species.name ORDER BY COUNT LIMIT 1;
+
+EXPLAN ANALYZE SELECT COUNT(*) FROM visits where animal_id = 4;
+EXPLAIN ANALYSE SELECT * FROM visits where vet_id = 2;
